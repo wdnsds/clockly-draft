@@ -22,6 +22,9 @@ class AttendanceController extends Controller
             'photo_url'  => 'nullable|string',
             'location'   => 'nullable|string',
             'mocked'     => 'boolean',
+            'latitude'   => 'required',
+            'longitude'  => 'required',
+            'address'  => 'required|string',
         ]);
 
         $employeeId = Auth::id();
@@ -36,6 +39,10 @@ class AttendanceController extends Controller
                 'photo_url' => $validated['photo_url'] ?? null,
                 'location'     => $validated['location'] ?? null,
                 'mocked'       => $validated['mocked'] ?? false,
+                'timestamp' => now(),
+                'latitude'     => $validated['latitude'],
+                'longitude'    => $validated['longitude'],
+                'address'      => $validated['address'],
             ]);
             return response()->json(['message' => 'Checked in', 'data' => $record]);
         }

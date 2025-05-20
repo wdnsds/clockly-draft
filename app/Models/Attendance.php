@@ -19,6 +19,11 @@ class Attendance extends Model
         'location',
         'mocked',
         'photo_url',
+        'type',
+        'timestamp',
+        'latitude',
+        'longitude',
+        'address'
     ];
 
     protected $casts = [
